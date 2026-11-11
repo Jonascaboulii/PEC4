@@ -1,0 +1,419 @@
+*{
+    margin: 0; /*El reset*/
+    padding: 0;
+    border: 0; 
+    outline: 0;
+    box-sizing: border-box; 
+}
+
+/*aca delcaramo la fuente, entonces, en el body que pusimo barlow condensed, la va a sacar de acá.*/
+@font-face {
+    font-family: 'Barlow Condensed';
+    src: url('../fonts/barlow-condensed-black-italic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Barlow Condensed';
+    src: url('../fonts/barlow-condensed-black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+/*nuestro body, ya ponemos, la fuente, el peso de la fuente, el estilo, el color, y que este en mayuscula. Por que este va a estar
+en toda la web*/
+body{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    font-style: italic;
+    color: whitesmoke;
+    
+}
+
+.vidrio{/*material de vidrio, vamos a usar para fichas, y esas cosas*/
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.822) 0%, rgba(0, 0, 0, 0));
+    backdrop-filter: blur(0.625rem) saturate(150%);/*blurea el fondo y el saturate cambia poquitin la saturacion*/
+    box-shadow:
+    inset 0.25rem 0.25rem 1.875rem rgba(255, 255, 255, 0.15), /*inset es para interno, con la , dividmo, el interno, del de abajo que es ext*/
+    0 0.25rem 1.875rem rgba(0, 0, 0, 0.479); /*primer valor es desplazamiento horizontal, luego vertical y luego blur*/
+    border: 0.5px solid #ff97fa79;
+
+}
+
+/*HEADER*/
+
+.header{/*nuestro header*/
+    position: absolute; /*absolute pone la posicion del elemento, relativo al primer padre o abuelo que no sea static, en este caso
+    header , su padre es body que es estatico entonces se va todo para arriba al bloque inicial. Al ser absolute, sale del flujo
+    es por eso deja de ocupar espacio en la pagina y no empuja nada hacia abajo, por eso nuestra imagen del hero sube.
+     Y al ponerle el z index lo ponemos por encima de nuestra imagen directamente*/
+    z-index: 1;
+    border-bottom: 0.5px solid #ff97fa79;
+    color: whitesmoke;
+    height: 10.937rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; /*con % se ajusta al espacio disponible del contenedor, en est caso body. Si pusieramos vw, toma el tamaño del viewport
+    osea tambien tomaria la barrita, y por ende queda un espacio  blanco*/
+    
+    
+}
+.header__nav{/*nuestro nav del header*/
+    margin: 0 auto; /*margen auto absorbe el espacio libre automaticamente. Tonces nos va  poner el nav mas centrado*/
+    /*el 0 vendria siendo para top y bottom, y auto es para left y right. */
+}
+/*nuestra lista del header, donde estan los enlaces, usamos flex por que queremos que nos quede en row*/
+.header__lista{/*nuestra  lista del nav, que contiene cada item con cada enlace*/
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+    gap: 8rem; /*hay que ponerle gap para que los elementos del flex se separen, si no quedan pegados*/
+}
+.header__logo{/*nuestro logo*/
+    width: 20%;
+    filter: drop-shadow(0 0 0.5rem #ff5df7c9); /*para poner glow, el primer 0 es desplazamiento horizontal y el segundo vertical, ya el tercer valor es el desenfoque*/
+}
+/*los enlaces de la lista, como estos heredan el estilo predeterminado del navegador, hay que ponerle que el text decoration sea non
+y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
+.header__item a{/*enlace de cada item*/
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 2rem;
+    transition: font-size .3s ease;
+    
+    
+}
+.header__item a:hover{/*hover de cada enlace*/
+    font-size: 2.2rem;
+    -webkit-text-stroke: 0.0625rem #00F0F0;
+}
+/*al modificador se le suma el elemento, que seria header__item, + lo que tenga --, se suma, y el modificador sobrescribe.*/
+.header__item--active a{/*el enlace activo en el momento*/
+    color: #00F0F0;
+}
+.header__item--contacto a{/*el enlace de get in touch, que es distinto*/
+    -webkit-text-stroke: 0.0625rem #FF00F2;
+}
+.header__item--contacto a:hover{/*el hover del get in touch*/
+    color: #FF00F2;
+    -webkit-text-stroke: 0.0625rem #FF00F2;
+}
+
+/*HERO*/
+.hero{/*Nuestra seccion del hero, que contiene el resto, y nuestra imagen del fondo*/
+    position: relative;
+    min-height: 100vh; /*le decimos que altura minima sea el height del viewport*/
+    background-image: url('../images/herocar.jpg'); /*ponemos nuestra imagen del hero aca en background image, por que asi, es el fondo
+    de nnuestro section, de esta manera, todas las demás cosas quedan arriba*/
+    background-size: cover; /*la imagen se estira para cubrir todo, recortando lo que sobre en vez de deformarse.*/
+    background-position: center; /*el recorte se hace desde el centro.*/
+    background-repeat: no-repeat; /*que no tilee*/
+    background-blend-mode: color;/*gracias a este podemos mezclar las capas,  de nuestro background image, con nuestro background coloir*/
+    background-color: rgba(0, 0, 0, 0.575);
+    box-shadow: inset 0.5rem 0.5rem 10rem black;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+}
+.hero__titulo{/*titulo de la seccion*/
+    font-size: 11rem;
+    line-height: 0.65;
+    color: whitesmoke;
+    text-shadow: 0 0 0.3rem whitesmoke;
+}
+.hero__resaltado{/*titulo resaltado*/
+    display: block; /*al decirle display block. Deja de ser inline, cuando es inline, basicamente el elemento mide solo lo q mide
+    en este caso, como es un texto, el tamaño del teexto va a ser el ancho del elemento, ahora, al pasarlo a  block, basicamente
+    pasa a comportarse como un bloque, entonces, ocupa todo el ancho de la pantalla, por eso, pasa a estar abajo, en lugar d la msima
+    linea*/
+    color: #FF00F2;
+    text-shadow: 0 0 1rem #ff5df7c9;
+    font-style: italic;
+}
+.hero__subtitulo{/*subtitulo del titulo*/
+    font-size:3rem;
+    margin-top: 2rem;
+    font-style: italic;
+    text-shadow: 0 0 0.2rem whitesmoke;
+}
+
+/*SECCIÓN CHOOSE YOUR WEAPON*/
+.hero--garage{/*fondo,, es un modificador por que usamos el hero de antes tambien*/
+    background-image: url('../images/garage.jpg');
+    align-items: flex-start;
+    padding-top: 10rem;
+    padding-left: 3rem;
+    flex-direction: column;
+    gap: 5rem;
+}
+.hero__titulo--garage{/*titulo de esta seccion*/
+    font-size: 7rem;
+}
+.kanji{ /*kanji suelto*/
+    position: absolute; /*queremos ponerlo en la esquina derecha. Sabemos que el absolute, se posiciona segun el padre que no sea static
+    en este caso, el padre hero(nuestro section) es relative, asique va a tomar es posicion y lo pone ahi flotando.*/
+    font-size: 8rem;
+    color: #FF00F2;
+    text-shadow: 0 0 1rem #ff5df7c9;
+    font-style: normal;
+    right: 0; /*con estos lo mandamos a la esquina*/
+    top: 0;
+    padding-right: 2rem;
+}
+
+/*FICHA*/
+.ficha{ /*la ficha en si de vidrio*/
+    height: 27rem;
+    width: 32rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 2rem;
+    padding-top: 1rem;
+    gap: 1rem;
+    clip-path: polygon(
+        50px 0%,      /* Esquina superior izquierda cortada */
+        100% 0%,      /* Superior derecha recta */
+        100% 90%,     /* Transición inferior derecha */
+        calc(100% - 50px) 100%, /* Esquina inferior derecha cortada */
+        0% 100%,      /* Inferior izquierda recta */
+        0% 10%         /* Cierre */
+        );
+        
+    border-image: linear-gradient(345deg, #ff97fafb, #ff00f238) 1;
+    
+}
+
+.auto{/*auto activo*/
+    position: absolute;
+    width: 60%;
+    right: 5rem;
+    top: 18rem;
+
+}
+
+.ficha__title{/*titulo de la ficha*/
+    font-size: 3.5rem;
+}
+
+.ficha__subtitle{
+    font-size: 1.5rem;
+    color: rgb(223, 223, 223);
+}
+.fontnormal{
+    font-style: normal;
+}
+
+.ficha__stats{ /*div donde se ecuentran todas las stats*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: .625rem;
+    font-size: 1.5rem;
+    
+}
+
+.stat{ /*div con cada stat individualmente*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+}
+
+.stat__nombre{/*nombre de cada stat*/
+    width: 2rem; /*seteando el width the nuestros nombres, hacemos que terminen en la misma posicion entonces las barritas
+    quedan en la misma posicion tambien*/
+}
+
+.stat__valor{/*valor del final de cada stat*/
+    width: 6rem;
+}
+
+.stat__barra{/*barrita de cada stat*/
+    background-color: rgba(245, 245, 245, 0);
+    width: 12rem;
+    height: 1.3rem;
+    border: 0.5px solid #898989;
+    display: flex;
+    gap: .225rem;
+    padding: .225rem;
+    margin-left: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat__point{/*punto de cada barrita*/
+    height: .8rem;
+    width: 1.1rem
+}
+
+.stat__point--active{/*punto activo de cada barrita*/
+    background-color: whitesmoke;
+}
+
+.stat__point--red{/*punto rojo de cada barrita*/
+    background-color: red;
+}
+
+.stat__point--desactive/*punto desactivado de cada barrita*/
+{
+    background-color: rgba(245, 245, 245, 0.288);
+}
+
+.ficha__boton{/*TUNE de la ficha*/
+    -webkit-text-stroke: 0.0625rem #FF00F2;
+    font-size: 4rem;
+    color: whitesmoke;
+    text-decoration: none;
+    transition: font-size .3s ease;
+}
+
+.ficha__boton:hover{ /*hover del TUNE de la ficha*/
+    font-size: 4.2rem;
+    color: #FF00F2;
+
+}
+
+.hero--showroom{/*fondo,, es un modificador por que usamos el hero de antes tambien*/
+    background-image: url('../images/showroom.png');
+    align-items: flex-end;
+    padding-top: 10rem;
+    padding-left: 3rem;
+    flex-direction: column;
+    gap: 5rem;
+    background-color: rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0.5rem 0.5rem 10rem black;
+}
+.kanji--cyan{ /*kanji suelto*/
+    color: #00F0F0;
+    text-shadow: 0 0 1rem #00f0f0b6;
+    left: 0; /*con estos lo mandamos a la esquina*/
+    padding-left: 2rem;
+}
+.ficha__subtitle--showroom{
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+.ficha__subtitle--yellow{
+    color: #FFB800;
+    font-size: 1.5rem;
+}
+.ficha__boton--yellow{
+    -webkit-text-stroke: 0.0625rem #FFB800;
+}
+.ficha__boton--yellow:hover{
+    color: #FFB800;
+}
+    
+
+/*READY TO CHASE THE NIGHT?*/
+
+.hero--end
+{
+    background-image: url('../images/end.jpg');
+    align-items: center;
+    padding-top: 27rem;
+    flex-direction: column;
+    gap: 5rem;
+    background-color: rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0.5rem 0.5rem 10rem black;
+}
+
+.hero__titulo--end{
+    font-size: 8rem;
+}
+
+/*FOOTER*/
+
+.footer{
+    background-image: url('../images/end.jpg');
+    background-size: cover; /*la imagen se estira para cubrir todo, recortando lo que sobre en vez de deformarse.*/
+    background-position: center; /*el recorte se hace desde el centro.*/
+    background-repeat: no-repeat; /*que no tilee*/
+    height: 50vh;
+    position: relative;
+}
+.footer__section{
+    width: 100%; /*de esta manera, al ser hijo queda del mismo tamaño que el footer , queremos eso, por que este es el que tiene el material de vidrio*/
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 4rem;
+    gap:6rem;
+}
+.footer__column{
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+    justify-content: center;
+    align-items: center;
+}
+.footer__link{
+    text-decoration: none;
+    color: rgb(196, 194, 194);
+    transition: font-size .3s ease;
+    font-size: 1.6rem;
+}
+.footer__link:hover{
+    font-size: 1.8rem;
+    -webkit-text-stroke: 0.0625rem #00F0F0;
+}
+.footer__contact{
+    position: absolute;
+    bottom: 5.93rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    
+    
+}
+.kanji--footer{
+   
+    top: 60%;
+    padding-right: 2rem;
+}
+.header__logo--footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+    
+
+/*BANNER*/
+.banner{ /*nuestro banner de letras japonesas que esta en movimiento*/
+    overflow: hidden; /*esto hace que corte todo lo que salga del banner*/
+    background-color: #11151B;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+}
+.banner__texto{/*texto de nuestro banner*/
+    white-space: nowrap;/* por defecto, si una linea no entra en una pantalla, pasa a la linea de abajo. con el nowrap, prohibimos eso
+    y hacemos que se quede si o si en la misma linea*/
+    color: #00F0F0;
+    text-shadow: 0 0 1rem #00f0f0b6;
+    font-size: 1.3rem;
+    letter-spacing: 0.05rem; 
+    /*llamamos la animacion que hicimos antes, le decimos cuanto dura, la interpolacion, que en este caso es linear, y cuantas veces se repite*/
+    animation: banner-anim 60s linear infinite;
+    
+}
+.banner__texto--amarillo{/*texto amarillo del banner*/
+    color: #FFB800;
+    text-shadow: 0 0 1rem #ffb700b0;
+}
+@keyframes banner-anim{/*movimiento del texto del banner*/
+    to { transform: translateX(-50%); }
+}
