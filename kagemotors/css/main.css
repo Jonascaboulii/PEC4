@@ -8,7 +8,7 @@
 
 /*aca delcaramo la fuente, entonces, en el body que pusimo barlow condensed, la va a sacar de acá.*/
 @font-face {
-    font-family: 'Barlow Condensed';
+    font-family: 'Barlow Condensed'; /*hay que poner el preconnecr en algun lado IMPORTANTE*/
     src: url('../fonts/barlow-condensed-black-italic.ttf') format('truetype');
     font-weight: 900;
     font-style: italic;
@@ -185,15 +185,15 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     padding-top: 1rem;
     gap: 1rem;
     clip-path: polygon(
-        50px 0%,      /* Esquina superior izquierda cortada */
+        50px 0%,      /* Esquina superior izquierda cortada X e Y */
         100% 0%,      /* Superior derecha recta */
         100% 90%,     /* Transición inferior derecha */
-        calc(100% - 50px) 100%, /* Esquina inferior derecha cortada */
+        90% 100%, /* Esquina inferior derecha cortada */
         0% 100%,      /* Inferior izquierda recta */
         0% 10%         /* Cierre */
         );
-        
     border-image: linear-gradient(345deg, #ff97fafb, #ff00f238) 1;
+        
     
 }
 
