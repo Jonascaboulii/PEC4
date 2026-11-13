@@ -185,13 +185,13 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     padding-top: 1rem;
     gap: 1rem;
     clip-path: polygon(
-        50px 0%,      /* Esquina superior izquierda cortada X e Y */
+        50px 0%,      /* Esquina superior izquierda cortada X e Y */ 
         100% 0%,      /* Superior derecha recta */
         100% 90%,     /* Transición inferior derecha */
         90% 100%, /* Esquina inferior derecha cortada */
         0% 100%,      /* Inferior izquierda recta */
         0% 10%         /* Cierre */
-        );
+        ); /*cada uno es cada punto de la forma*/
     border-image: linear-gradient(345deg, #ff97fafb, #ff00f238) 1;
         
     
@@ -336,6 +336,46 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 
 .hero__titulo--end{
     font-size: 8rem;
+}
+
+
+/*Hero Models*/
+.hero--models{
+    background-image: url('../images/end.jpg');
+    background-color: rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0.5rem 0.5rem 10rem black;
+    
+}
+.threemachines{
+    background-color: #11151B;
+    width: 100%;
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero__titulo--threemachines{
+    font-size: 8rem;
+}
+.hero__resaltado--flecha{
+    display: inline;
+}
+
+/*Hero Configurator*/
+.hero--configurator{
+    background-image: url('../images/tune.jpg');
+    background-color: rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0.5rem 0.5rem 10rem black;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+}
+.ficha--configurator{
+    height: 46rem;
+    width: 35rem;
+    margin-top: 11rem;
+    margin-right: 0px;
 }
 
 /*FOOTER*/
