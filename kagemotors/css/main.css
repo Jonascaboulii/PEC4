@@ -5,7 +5,18 @@
     outline: 0;
     box-sizing: border-box; 
 }
-
+:root{ /*el root, sirve para crear aca unas variables, que nosotros despues  podemos, llamar y nos ahorramos codigo*/
+    --color-magenta: #FF00F2;
+    --color-magenta-glow: #ff5df7c9;
+    --color-cyan: #00F0F0;
+    --color-cyan-glow: #00f0f0b6;
+    --color-yellow: #FFB800;
+    --color-yellow-glow: #ffb700b0;
+    --color-fondo: #11151B;
+    --color-borde: #ff97fa79;
+    --color-texto: whitesmoke;
+    --transicion: .3s ease;
+}
 /*aca delcaramo la fuente, entonces, en el body que pusimo barlow condensed, la va a sacar de acá.*/
 @font-face {
     font-family: 'Barlow Condensed'; /*hay que poner el preconnecr en algun lado IMPORTANTE*/
@@ -27,7 +38,7 @@ body{
     font-size: 16px;
     font-weight: 900;
     font-style: italic;
-    color: whitesmoke;
+    color: var(--color-texto);
     
 }
 
@@ -37,7 +48,7 @@ body{
     box-shadow:
     inset 0.25rem 0.25rem 1.875rem rgba(255, 255, 255, 0.15), /*inset es para interno, con la , dividmo, el interno, del de abajo que es ext*/
     0 0.25rem 1.875rem rgba(0, 0, 0, 0.479); /*primer valor es desplazamiento horizontal, luego vertical y luego blur*/
-    border: 0.5px solid #ff97fa79;
+    border: 0.5px solid var(--color-borde);
 
 }
 
@@ -57,8 +68,8 @@ body{
     es por eso deja de ocupar espacio en la pagina y no empuja nada hacia abajo, por eso nuestra imagen del hero sube.
      Y al ponerle el z index lo ponemos por encima de nuestra imagen directamente*/
     z-index: 1;
-    border-bottom: 0.5px solid #ff97fa79;
-    color: whitesmoke;
+    border-bottom: 0.5px solid var(--color-borde);
+    color: var(--color-texto);
     height: 10.937rem;
     display: flex;
     flex-direction: row;
@@ -82,34 +93,35 @@ body{
     list-style: none;
     gap: 8rem; /*hay que ponerle gap para que los elementos del flex se separen, si no quedan pegados*/
 }
-.header__logo{/*nuestro logo*/
-    width: 20%;
-    filter: drop-shadow(0 0 0.5rem #ff5df7c9); /*para poner glow, el primer 0 es desplazamiento horizontal y el segundo vertical, ya el tercer valor es el desenfoque*/
+.logo{/*nuestro logo*/
+   width: 20%;
+    filter: drop-shadow(0 0 0.5rem var(--color-magenta-glow)); /*para poner glow, el primer 0 es desplazamiento horizontal y el segundo vertical, ya el tercer valor es el desenfoque*/
 }
 /*los enlaces de la lista, como estos heredan el estilo predeterminado del navegador, hay que ponerle que el text decoration sea non
 y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 .header__item a{/*enlace de cada item*/
     text-decoration: none;
-    color: whitesmoke;
+    color: var(--color-texto);
     font-size: 2rem;
-    transition: font-size .3s ease;
+    transition: font-size var(--transicion);
     
     
 }
 .header__item a:hover{/*hover de cada enlace*/
     font-size: 2.2rem;
-    -webkit-text-stroke: 0.0625rem #00F0F0;
+    -webkit-text-stroke: 0.0625rem var(--color-cyan);
 }
 /*al modificador se le suma el elemento, que seria header__item, + lo que tenga --, se suma, y el modificador sobrescribe.*/
 .header__item--active a{/*el enlace activo en el momento*/
-    color: #00F0F0;
+    color: var(--color-cyan);
 }
 .header__item--contacto a{/*el enlace de get in touch, que es distinto*/
-    -webkit-text-stroke: 0.0625rem #FF00F2;
+    -webkit-text-stroke: 0.0625rem var(--color-magenta);
+    
 }
 .header__item--contacto a:hover{/*el hover del get in touch*/
-    color: #FF00F2;
-    -webkit-text-stroke: 0.0625rem #FF00F2;
+    color: var(--color-magenta);
+    -webkit-text-stroke: 0.0625rem var(--color-magenta);
 }
 
 /*HERO*/
@@ -131,23 +143,23 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 .hero__titulo{/*titulo de la seccion*/
     font-size: 11rem;
     line-height: 0.65;
-    color: whitesmoke;
-    text-shadow: 0 0 0.3rem whitesmoke;
+    color: var(--color-texto);
+    text-shadow: 0 0 0.3rem var(--color-texto);
 }
 .hero__resaltado{/*titulo resaltado*/
     display: block; /*al decirle display block. Deja de ser inline, cuando es inline, basicamente el elemento mide solo lo q mide
     en este caso, como es un texto, el tamaño del teexto va a ser el ancho del elemento, ahora, al pasarlo a  block, basicamente
     pasa a comportarse como un bloque, entonces, ocupa todo el ancho de la pantalla, por eso, pasa a estar abajo, en lugar d la msima
     linea*/
-    color: #FF00F2;
-    text-shadow: 0 0 1rem #ff5df7c9;
+    color: var(--color-magenta);
+    text-shadow: 0 0 1rem var(--color-magenta-glow);
     font-style: italic;
 }
 .hero__subtitulo{/*subtitulo del titulo*/
     font-size:3rem;
     margin-top: 2rem;
     font-style: italic;
-    text-shadow: 0 0 0.2rem whitesmoke;
+    text-shadow: 0 0 0.2rem var(--color-texto);
 }
 
 /*SECCIÓN CHOOSE YOUR WEAPON*/
@@ -159,15 +171,15 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     flex-direction: column;
     gap: 5rem;
 }
-.hero__titulo--garage{/*titulo de esta seccion*/
+.hero__titulo--md{/*titulo mediano*/
     font-size: 7rem;
 }
 .kanji{ /*kanji suelto*/
     position: absolute; /*queremos ponerlo en la esquina derecha. Sabemos que el absolute, se posiciona segun el padre que no sea static
     en este caso, el padre hero(nuestro section) es relative, asique va a tomar es posicion y lo pone ahi flotando.*/
     font-size: 8rem;
-    color: #FF00F2;
-    text-shadow: 0 0 1rem #ff5df7c9;
+    color: var(--color-magenta);
+    text-shadow: 0 0 1rem var(--color-magenta-glow);
     font-style: normal;
     right: 0; /*con estos lo mandamos a la esquina*/
     top: 0;
@@ -263,7 +275,7 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 }
 
 .stat__point--active{/*punto activo de cada barrita*/
-    background-color: whitesmoke;
+    background-color: var(--color-texto);
 }
 
 .stat__point--red{/*punto rojo de cada barrita*/
@@ -275,18 +287,24 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     background-color: rgba(245, 245, 245, 0.288);
 }
 
-.ficha__boton{/*TUNE de la ficha*/
-    -webkit-text-stroke: 0.0625rem #FF00F2;
+.boton{/*TUNE de la ficha*/
+    --boton-color: var(--color-magenta);
+    -webkit-text-stroke: 0.0625rem var(--boton-color);
     font-size: 4rem;
-    color: whitesmoke;
+    color: var(--color-texto);
     text-decoration: none;
-    transition: font-size .3s ease;
+    transition: font-size var(--transicion);
+    background: none;  /* saca el gris del navegador */
+    cursor: pointer;
+    font-family: inherit; /* usa la letra del body */ /*Por que después esta clase la usamos en el contact en el boton
+    que es elemento boton también ,*/
+    font-weight: inherit;
+    font-style: inherit;
 }
 
-.ficha__boton:hover{ /*hover del TUNE de la ficha*/
+.boton:hover{ /*hover del TUNE de la ficha*/
     font-size: 4.2rem;
-    color: #FF00F2;
-
+    color: var(--boton-color);
 }
 
 .hero--showroom{/*fondo,, es un modificador por que usamos el hero de antes tambien*/
@@ -300,24 +318,23 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     box-shadow: inset 0.5rem 0.5rem 10rem black;
 }
 .kanji--cyan{ /*kanji suelto*/
-    color: #00F0F0;
-    text-shadow: 0 0 1rem #00f0f0b6;
+    color: var(--color-cyan);
+    text-shadow: 0 0 1rem var(--color-cyan-glow);
     left: 0; /*con estos lo mandamos a la esquina*/
     padding-left: 2rem;
 }
-.ficha__subtitle--showroom{
+.ficha__subtitle--lg{ /*subtitulo de fichas de tamaño large*/
     font-size: 2rem;
     margin-right: 1rem;
 }
 .ficha__subtitle--yellow{
-    color: #FFB800;
-    font-size: 1.5rem;
+    --boton-color: var(--color-yellow);
 }
-.ficha__boton--yellow{
-    -webkit-text-stroke: 0.0625rem #FFB800;
+.boton--yellow{
+    -webkit-text-stroke: 0.0625rem var(--color-yellow);
 }
-.ficha__boton--yellow:hover{
-    color: #FFB800;
+.boton--yellow:hover{
+    color: var(--color-yellow);
 }
     
 
@@ -334,7 +351,7 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     box-shadow: inset 0.5rem 0.5rem 10rem black;
 }
 
-.hero__titulo--end{
+.hero__titulo--lg{/*modificador de titulos de tamaño largo*/
     font-size: 8rem;
 }
 
@@ -346,17 +363,15 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     box-shadow: inset 0.5rem 0.5rem 10rem black;
     
 }
-.threemachines{
-    background-color: #11151B;
+.franja{
+    background-color: var(--color-fondo);
     width: 100%;
     height: 20rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.hero__titulo--threemachines{
-    font-size: 8rem;
-}
+
 .hero__resaltado--flecha{
     display: inline;
 }
@@ -372,11 +387,250 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     padding: 0;
 }
 .ficha--configurator{
-    height: 46rem;
+    height: auto; /*se adapta al contenido*/
     width: 35rem;
     margin-top: 11rem;
     margin-right: 0px;
 }
+.pestanas{/*nuestras pestañas, models,paint,wheels etc*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--color-borde);
+    gap: 1.5rem;
+}
+.pestanas__boton{/*ponemos boton por que despues en js lo vamos a usar*/
+    background: none; /*sacamos el background del boton*/
+    font: inherit; /*si no ponemos esto, el boton no usa nuestra fuente*/
+    font-size: 1.8rem;
+    color: var(--color-texto);
+    cursor: pointer;
+}
+.pestanas__boton:hover{
+     -webkit-text-stroke: 0.0625rem var(--color-cyan);
+}
+.pestanas__boton--active{
+    color: var(--color-cyan);
+}
+.opciones{/*nuestra seccion con todas las opciones*/
+    padding: 1.2rem 2rem;
+}
+.opciones__titulo{/*titulos de las opciones*/
+    font-size: 2.4rem;
+    -webkit-text-stroke: 0.0625rem var(--color-magenta);
+    margin-bottom: 1rem;
+}
+.opciones__grupo{/*nuestro div con todos los colores y opciones*/
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 6rem; /*espacio entre filas y columnas*/
+    justify-items: center;     /* cada muestra centrada en su celda */
+}
+.muestra{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+}
+
+.muestra__input{
+    position: absolute;
+    opacity: 0;                /* invisible, pero sigue funcionando con el teclado */
+}
+
+.muestra__circulo{ /*nuestro circulo*/
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+}
+
+.muestra__nombre{
+    font-size: 1rem;
+}
+.muestra__circulo--magenta{ background-color: var(--color-magenta); }
+.muestra__circulo--cyan{ background-color: var(--color-cyan); }
+.muestra__circulo--yellow{ background-color: var(--color-yellow); }
+.muestra__circulo--red{ background-color: #FF0000; }
+.muestra__circulo--blue{ background-color: #0014FF; }
+.muestra__circulo--green{ background-color: #00FF2A; }
+.muestra__circulo--white{ background-color: #FFFFFF; }
+.muestra__circulo--gray{ background-color: #8A8A8A; }
+.muestra__circulo--black{ background-color: #000000; }
+.muestra__circulo--matte{
+    background-color: whitesmoke;
+}
+
+.muestra__circulo--metallic{
+    background: radial-gradient(circle, #FFFFFF 0%, #9A9A9A 100%);
+}
+
+.muestra__circulo--glossy{
+    background: radial-gradient(circle at 30% 30%, #3A3A3A, #0A0A0A);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+/*Hero shworoom*/
+.hero--galeria{
+    background-image: url('../images/garage.jpg');
+    background-color: rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0.5rem 0.5rem 10rem black;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0;
+}
+.filtros{
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    font-size: 2rem;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+.filtros--active{
+    color: var(--color-cyan);
+}
+.grilla{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 3.5rem 8rem; /*Primero espacio entre filas,  después entre columnas*/
+    margin-bottom: 3rem;
+    margin-top: 5rem;
+    
+
+}
+.ficha--showroom{
+    width: 22rem;
+    height: auto; /*se adapta al contenido*/
+    padding: 1.2rem 1.5rem 1rem;
+    gap: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.6));
+}
+.ficha__img{
+    width: 100%;
+    aspect-ratio: 16 / 9;/*fija la proporcion*/
+    object-fit: contain;      /* el auto entero, sin recortar */
+    background: url('../images/tune.jpg') center / cover;/*le ponemos basicamente una imagen de fondo
+    a nuestra imagen, funciona por que nuestro auto es un pgn claro*/
+    
+}
+
+.boton--chico{
+    font-size: 3.5rem;
+}
+.boton--chico:hover{
+    font-size: 3.7rem;
+}
+
+/*CONTACTO*/
+
+.hero--contacto{ /*Nuestro section del hero con el modificador por que estamos en contacto*/
+    background-image: url('../images/tune.jpg');
+    background-color: rgba(0, 0, 0, 0.575);
+    box-shadow: inset 0.5rem 0.5rem 10rem black;
+    flex-direction: row;
+    justify-content: space-between;/* título a la izquierda, panel a la derecha */
+    align-items: flex-start;
+    padding-top: 15rem;
+}
+/*Modificador de nuestra ficha, ya que en esta seccion de contacto es mas grande y tiene el form*/
+.ficha--contacto{
+    flex-direction: row; /* uno al lado del otro */
+    align-items: flex-start;
+    
+    width: 65rem;
+    height: auto;/* que la altura la decida el contenido */
+    padding: 2.5rem;
+    margin-bottom: 5rem;
+    gap: 4rem;
+    clip-path: polygon( /*en esta ficha como es mas grande, que sea un poco mas reducidos los cortes del borde*/
+    3rem 0,
+    100% 0,
+    100% calc(100% - 3rem),
+    calc(100% - 3rem) 100%,
+    0 100%,
+    0 3rem
+);
+  
+/*Nuestro Form*/
+}
+.formulario{
+    flex: 1;/* ocupa el espacio que deja la columna de datos . (???????????????????????)*/
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.formulario__campo{/* nuestro div con todo( label e innput)*/
+    display: flex;
+    flex-direction: column; /* label arriba, input abajo */
+    gap: 0.4rem;
+}
+.formulario__etiqueta{ /*Nuestro label*/
+    font-size: 1.7rem;
+    
+    color: var(--color-texto);
+}
+.formulario__entrada{/*Nuestro Input*/
+    font: inherit; /* que use la letra del body */
+    font-size: 1.4rem;
+    color: var(--color-texto);
+    background-color: rgb(17, 17, 17);
+    border: 0.1px solid;
+    border-image: linear-gradient(345deg, #ff97fa77, #ff00f20e) 1;
+    padding: 0.6rem 0.8rem;
+    width: 100%;
+
+}
+.formulario__boton{
+    align-self: flex-start; /*align self es propiedad de hijo de flex. y lo podemos alinear en el*/
+}
+.formulario__entrada--grande{ /*Nuestro text area*/
+    resize: none;
+}
+.datos{ /*Datos, mail, telefono, redes, etc etc*/
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    justify-content: center;
+    align-items: flex-start;
+    width: max-content;
+}
+.datotres{/*Social media*/
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.datos__etiqueta{/*El nombre de cada dato*/
+    
+    font-size: 2rem;
+    -webkit-text-stroke: 0.0325rem var(--color-magenta);
+    
+}
+.datos__phone{/*num de tel*/
+    font-size: 1.5rem;
+}
+.datos__enlace{/*enlaces instagram y linkedin*/
+    text-decoration: none;
+    color: var(--color-texto);
+    font-size: 1.5rem;
+    transition: font-size var(--transicion);
+    
+    
+}
+.datos__enlace:hover{
+    font-size: 1.7rem;
+    -webkit-text-stroke: 0.0625rem var(--color-cyan);
+}
+
 
 /*FOOTER*/
 
@@ -409,12 +663,12 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 .footer__link{
     text-decoration: none;
     color: rgb(196, 194, 194);
-    transition: font-size .3s ease;
+    transition: font-size var(--transicion);
     font-size: 1.6rem;
 }
 .footer__link:hover{
     font-size: 1.8rem;
-    -webkit-text-stroke: 0.0625rem #00F0F0;
+    -webkit-text-stroke: 0.0625rem var(--color-cyan);
 }
 .footer__contact{
     position: absolute;
@@ -432,7 +686,7 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     top: 60%;
     padding-right: 2rem;
 }
-.header__logo--footer{
+.logo--footer{
     position: absolute;
     bottom: 0;
     left: 0;
@@ -442,7 +696,7 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 /*BANNER*/
 .banner{ /*nuestro banner de letras japonesas que esta en movimiento*/
     overflow: hidden; /*esto hace que corte todo lo que salga del banner*/
-    background-color: #11151B;
+    background-color: var(--color-fondo);
     height: 4rem;
     display: flex;
     align-items: center;
@@ -450,8 +704,8 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 .banner__texto{/*texto de nuestro banner*/
     white-space: nowrap;/* por defecto, si una linea no entra en una pantalla, pasa a la linea de abajo. con el nowrap, prohibimos eso
     y hacemos que se quede si o si en la misma linea*/
-    color: #00F0F0;
-    text-shadow: 0 0 1rem #00f0f0b6;
+    color: var(--color-cyan);
+    text-shadow: 0 0 1rem var(--color-cyan-glow);
     font-size: 1.3rem;
     letter-spacing: 0.05rem; 
     /*llamamos la animacion que hicimos antes, le decimos cuanto dura, la interpolacion, que en este caso es linear, y cuantas veces se repite*/
@@ -459,8 +713,8 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     
 }
 .banner__texto--amarillo{/*texto amarillo del banner*/
-    color: #FFB800;
-    text-shadow: 0 0 1rem #ffb700b0;
+    color: var(--color-yellow);
+    text-shadow: 0 0 1rem var(--color-yellow-glow);
 }
 @keyframes banner-anim{/*movimiento del texto del banner*/
     to { transform: translateX(-50%); }

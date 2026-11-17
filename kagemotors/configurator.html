@@ -10,7 +10,7 @@
 <body>
      <header class="header vidrio">
 
-       <img class="header__logo" src="images/logo.png">
+       <img class="logo" src="images/logo.png">
         <nav class="header__nav">
             <ul class="header__lista">
                 <li class="header__item"><a href="index.html"> HOME </a></li> <!--BEM, por que nosotros queremos que la pagina que este activa, en el header, aparezca en cyan. Entonces por eso el modificador que es -- por que todos comparten la misma clase, pero despues en el css, este va a ser el unico que va a estar en cyan. y se va a aplicar en todas las paginas-->
@@ -34,13 +34,136 @@
 
         <section class="hero hero--configurator">
             <span class="kanji kanji--cyan">影</span>
-            <article class="ficha ficha--configurator vidrio"></article>
+            <article class="ficha ficha--configurator vidrio">
+                <nav class="pestanas">
+                    <button class="pestanas__boton" type="button">MODELS</button>
+                    <button class="pestanas__boton pestanas__boton--active" type="button">PAINT</button>
+                    <button class="pestanas__boton" type="button">WHEELS</button>
+                    <button class="pestanas__boton" type="button">AERO</button>
+                    <button class="pestanas__boton" type="button">DECALS</button>
+                </nav>
+
+                <section class="opciones">
+                    <h3 class="opciones__titulo">COLOR 色</h3>
+                    <div class="opciones__grupo">
+                        <label class="muestra"><!--Usamos label ya que vamos a usar input, por que? Por que queremos usar el type radio
+                            de input, que es el tipico ciruclito checkbox y como justamente esto son botones también lo vamos a aprovechar
+                            y le vamos a cambiar el estilo para que la opacidad sea 0 y poner nuestro circulo  como queremos
+                            y como sabemos label e input estan conectados, en este caso, como input esta dentro de label,
+                            al hacerle click en la etiqueta ya automaticamente tambien funciona-->
+                            <input class="muestra__input" type="radio" name="color" value="magenta"><!--Le ponemos name="color a todos
+                            ya que eso va a ser que al marcar uno, se desmarquen los demas tambien, y el value="magenta" lo vamos a usar
+                            eventualmente en el js-->
+                            <span class="muestra__circulo muestra__circulo--magenta"></span> <!--este basicamente vendria siendo nuestro
+                            circulo dibujado, uno la forma y el otro el modificador de su color-->
+                            <span class="muestra__nombre">MAGENTA</span>
+                        </label>
+                        <label class="muestra">
+                            <input class="muestra__input" type="radio" name="color" value="cyan">
+                            <span class="muestra__circulo muestra__circulo--cyan"></span>
+                            <span class="muestra__nombre">CYAN</span>
+                        </label>
+                        <label class="muestra">
+                            <input class="muestra__input" type="radio" name="color" value="yellow">
+                            <span class="muestra__circulo muestra__circulo--yellow"></span>
+                            <span class="muestra__nombre">YELLOW</span>
+                        </label>
+                        <label class="muestra">
+                            <input class="muestra__input" type="radio" name="color" value="red">
+                            <span class="muestra__circulo muestra__circulo--red"></span>
+                            <span class="muestra__nombre">RED</span>
+                        </label>
+                        <label class="muestra">
+                            <input class="muestra__input" type="radio" name="color" value="blue">
+                            <span class="muestra__circulo muestra__circulo--blue"></span>
+                            <span class="muestra__nombre">BLUE</span>
+                        </label>
+                        <label class="muestra">
+                            <input class="muestra__input" type="radio" name="color" value="green">
+                            <span class="muestra__circulo muestra__circulo--green"></span>
+                            <span class="muestra__nombre">GREEN</span>
+                        </label>
+                        <label class="muestra">
+                            <input class="muestra__input" type="radio" name="color" value="white">
+                            <span class="muestra__circulo muestra__circulo--white"></span>
+                            <span class="muestra__nombre">WHITE</span>
+                        </label>
+                        <label class="muestra">
+                            <input class="muestra__input" type="radio" name="color" value="gray">
+                            <span class="muestra__circulo muestra__circulo--gray"></span>
+                            <span class="muestra__nombre">GRAY</span>
+                        </label>
+                        <label class="muestra">
+                            <input class="muestra__input" type="radio" name="color" value="black">
+                            <span class="muestra__circulo muestra__circulo--black"></span>
+                            <span class="muestra__nombre">BLACK</span>
+                        </label>
+                    </div>
+                </section>
+
+                <section class="opciones">
+                    <h3 class="opciones__titulo">FINISH 質感</h3>
+                    <div class="opciones__grupo">
+                        <label class="muestra"> 
+                            <input class="muestra__input" type="radio" name="acabado" value="matte">
+                            <span class="muestra__circulo muestra__circulo--matte"></span>
+                            <span class="muestra__nombre">MATTE</span>
+                        </label>
+                        <label class="muestra">
+                            <input class="muestra__input" type="radio" name="acabado" value="metallic">
+                            <span class="muestra__circulo muestra__circulo--metallic"></span>
+                            <span class="muestra__nombre">METALLIC</span>
+                        </label>
+                        <label class="muestra">
+                            <input class="muestra__input" type="radio" name="acabado" value="glossy">
+                            <span class="muestra__circulo muestra__circulo--glossy"></span>
+                            <span class="muestra__nombre">GLOSSY</span>
+                        </label>
+                    </div>
+                </section>
+                <button class="boton ficha__orden" type="button">ORDER 注文</button>
+
+            </article>
         </section>
+       
+
+        <div class="banner" aria-hidden="true">
+            <p class="banner__texto banner__texto--amarillo">
+                 影 ✦ 東京の夜を駆け抜けろ ✦ KAGE MOTORS ✦ 速度・スタイル・自由 ✦ BUILD YOUR RIDE ✦
+                 影 ✦ 東京の夜を駆け抜けろ ✦ KAGE MOTORS ✦ 速度・スタイル・自由 ✦ BUILD YOUR RIDE ✦
+                 影 ✦ 東京の夜を駆け抜けろ ✦ KAGE MOTORS ✦ 速度・スタイル・自由 ✦ BUILD YOUR RIDE ✦
+                 影 ✦ 東京の夜を駆け抜けろ ✦ KAGE MOTORS ✦ 速度・スタイル・自由 ✦ BUILD YOUR RIDE ✦
+                 影 ✦ 東京の夜を駆け抜けろ ✦ KAGE MOTORS ✦ 速度・スタイル・自由 ✦ BUILD YOUR RIDE ✦
+                 影 ✦ 東京の夜を駆け抜けろ ✦ KAGE MOTORS ✦ 速度・スタイル・自由 ✦ BUILD YOUR RIDE ✦
+            </p>
+        </div>
 
     </main>
 
 
+    <footer class="footer">
+        <section class="footer__section vidrio">
+            <span class="kanji kanji--footer">影</span>
+            <img class="logo logo--footer" src="images/logo.png">
+            <div class="footer__column">
+                MODELS
+                <a class="footer__link" href="models.html"> NISSAN SKYLINE GT-R </a>
+                <a class="footer__link" href="models.html"> TOYOTA SUPRA MK-4 </a>
+                <a class="footer__link" href="models.html"> MAZDA RX-7</a>
+            </div>
+            <div class="footer__column">
+                EXPLORE
+                <a class="footer__link" href="models.html"> MODELS </a>
+                <a class="footer__link" href="configurator.html"> CONFIGURATOR </a>
+                <a class="footer__link" href="showroom.html"> SHOWROOM</a>
+            </div>
+            <div class="footer__contact">
+                CONTACT
 
+            </div>
+        </section>
+       
+    </footer>
 
 
 

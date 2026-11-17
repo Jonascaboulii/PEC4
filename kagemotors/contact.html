@@ -8,9 +8,9 @@
     <script src="js/main.js" defer></script>
 </head>
 <body>
-   <header class="header">
+   <header class="header vidrio">
 
-       <img class="header__logo" src="images/logo.png">
+       <img class="logo" src="images/logo.png">
         <nav class="header__nav">
             <ul class="header__lista">
                 <li class="header__item"><a href="index.html"> HOME </a></li> <!--BEM, por que nosotros queremos que la pagina que este activa, en el header, aparezca en cyan. Entonces por eso el modificador que es -- por que todos comparten la misma clase, pero despues en el css, este va a ser el unico que va a estar en cyan. y se va a aplicar en todas las paginas-->
@@ -20,11 +20,112 @@
                 <li class="header__item header__item--active header__item--contacto"><a href="contact.html"> GET IN TOUCH連絡 </a></li>
             </ul>
         </nav>
+    </header>
+    <main>
+    <section class="hero hero--contacto">
+        <div class="hero__contenido">
+            <h1 class="hero__titulo hero__titulo--lg fontnormal">
+                GET IN
+                <span class="hero__resaltado">TOUCH.</span>
+            </h1>
+        </div>
+
+        <article class="ficha ficha--contacto vidrio">
+            <form class="formulario" action="#"> <!--Form es basicamente para hacer formularios y enviarlos, el action con # hace que no se envie nada, ya que claro, es una maqueta-->
+                <!--actualizar el action con las nuevas cosas vistas en clase-->
+                <div class="formulario__campo"> <!--Tenemos nuestro div con todo. El label, va a decir a la isquierda NAME,
+                    y al hacerle click, va a ir directo al input.-->
+                    <label class="formulario__etiqueta" for="nombre">NAME</label> <!--Como  en for, estamos poniendo el id
+                    que tenemos en input, automaticamente al hacerle click al label, va al input.-->
+                    <input class="formulario__entrada" type="text" id="nombre" name="nombre" required> <!--El type decimos basicamente
+                    de que va a ser el input, si es texto, mail , passsword etc-->
+                    <!--Al poner el name, hacemos que el dato este que estamos introduciendo, en este caso justamente, nombre,
+                    viaje con esa label, llegará a donde tenga que llegar como x ej nombre:Jonás-->
+                </div>
+
+                <div class="formulario__campo">
+                    <label class="formulario__etiqueta" for="correo">EMAIL</label>
+                    <input class="formulario__entrada" type="email" id="correo" name="correo" required><!--Al poner type mail, por ej
+                    chequea automaticamente que haya una @. Con required hacemos que no se puedaenviar el form, sin esto-->
+                </div>
+
+                <div class="formulario__campo">
+                    <label class="formulario__etiqueta" for="asunto">SUBJECT</label>
+                    <input class="formulario__entrada" type="text" id="asunto" name="asunto">
+                </div>
+
+                <div class="formulario__campo">
+                    <label class="formulario__etiqueta" for="mensaje">MESSAGE</label>
+                    <!--Text area, esta pensado justamente para un texto largo, un input, es mas para una sola palabra o algo corto
+                    El row 5 es el alto inicial-->
+                    <textarea class="formulario__entrada formulario__entrada--grande" id="mensaje" name="mensaje" rows="5" required></textarea>
+                </div>
+
+                <button class="boton formulario__boton" type="submit">SEND 送信</button>
+            </form>
+
+            <div class="datos">
+                <div class="datouno">
+                    <p class="datos__etiqueta">Email</p>
+                    <a class="datos__enlace" href="mailto:hola@ejemplo.com">hola@ejemplo.com</a>
+                </div>
+                <div class="datodos">
+                    <p class="datos__etiqueta">Phone Number</p>
+                    <p class="datos__phone">+00 000 000 000</p>
+                </div>
+                <div class="datotres">
+                    <p class="datos__etiqueta">Social Media</p>
+                    <a class="datos__enlace" href="#">Instagram</a>
+                    <a class="datos__enlace" href="#">Linkedin</a> <!--# te manda al incio de la pagina, sirve ahora como placeholder-->
+
+                </div>
+
+            </div>
+        </article>
+    </section>
+
+
+    <div class="banner" aria-hidden="true">
+            <p class="banner__texto banner__texto--amarillo">
+                 影 ✦ 東京の夜を駆け抜けろ ✦ KAGE MOTORS ✦ 速度・スタイル・自由 ✦ BUILD YOUR RIDE ✦
+                 影 ✦ 東京の夜を駆け抜けろ ✦ KAGE MOTORS ✦ 速度・スタイル・自由 ✦ BUILD YOUR RIDE ✦
+                 影 ✦ 東京の夜を駆け抜けろ ✦ KAGE MOTORS ✦ 速度・スタイル・自由 ✦ BUILD YOUR RIDE ✦
+                 影 ✦ 東京の夜を駆け抜けろ ✦ KAGE MOTORS ✦ 速度・スタイル・自由 ✦ BUILD YOUR RIDE ✦
+                 影 ✦ 東京の夜を駆け抜けろ ✦ KAGE MOTORS ✦ 速度・スタイル・自由 ✦ BUILD YOUR RIDE ✦
+                 影 ✦ 東京の夜を駆け抜けろ ✦ KAGE MOTORS ✦ 速度・スタイル・自由 ✦ BUILD YOUR RIDE ✦
+            </p>
+        </div>
+
+</main>
+
+<footer class="footer">
+        <section class="footer__section vidrio">
+            <span class="kanji kanji--footer">影</span>
+            <img class="logo logo--footer" src="images/logo.png">
+            <div class="footer__column">
+                MODELS
+                <a class="footer__link" href="models.html"> NISSAN SKYLINE GT-R </a>
+                <a class="footer__link" href="models.html"> TOYOTA SUPRA MK-4 </a>
+                <a class="footer__link" href="models.html"> MAZDA RX-7</a>
+            </div>
+            <div class="footer__column">
+                EXPLORE
+                <a class="footer__link" href="models.html"> MODELS </a>
+                <a class="footer__link" href="configurator.html"> CONFIGURATOR </a>
+                <a class="footer__link" href="showroom.html"> SHOWROOM</a>
+            </div>
+            <div class="footer__contact">
+                CONTACT
+
+            </div>
+        </section>
+       
+    </footer>
+
                
            
       
       
-    </header>
 
 
 
