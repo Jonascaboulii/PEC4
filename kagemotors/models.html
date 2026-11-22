@@ -4,13 +4,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Kage Motors</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/main.js" defer></script>
+    <meta property="og:title" content="Kage Motors — JDM Legends & Custom Builds">
+    <meta property="og:description" content="Explore iconic Japanese sports cars, customize your build, and discover the night street culture.">
+    <meta property="og:image" content="images/hero-home.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kagemotors.com">
 </head>
 <body>
      <header class="header vidrio">
 
-        <img class="logo" src="images/logo.png">
+        <img class="logo" src="images/logo.png" alt="Kage Motors Logo">
+        <label class="header__hamburguesa" for="menu-toggle">☰</label>
+        <input class="header__check" type="checkbox" id="menu-toggle">
+        <!--EL label es el boton de las 3 raytias basicamente
+        sabemos que en el label, al darle en el for, el mismo id del input
+        se activa el input.-->
+        <!--El input checkbox es el tipico cuadradito que si apretas 
+        se pone tilde-->
         <nav class="header__nav">
             <ul class="header__lista">
                 <li class="header__item"><a href="index.html"> HOME </a></li> <!--BEM, por que nosotros queremos que la pagina que este activa, en el header, aparezca en cyan. Entonces por eso el modificador que es -- por que todos comparten la misma clase, pero despues en el css, este va a ser el unico que va a estar en cyan. y se va a aplicar en todas las paginas-->
@@ -71,7 +84,7 @@
 
         <section class="hero hero--garage">
              <span class="kanji">影</span>
-             <img class="auto" src="images/skylinepiola.png">
+           
              <div class="hero__contenido">
                 <h2 class="hero__titulo hero__titulo--md">
                     01/03
@@ -127,6 +140,7 @@
                 </div>
                 <a class="boton" href="configurator.html"> TUNE 改造 </a>
             </article>
+              <img class="auto" src="images/skylinepiola.png" alt="Nissan Skyline GT-R">
         </section>
 
          <div class="banner" aria-hidden="true">

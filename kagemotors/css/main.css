@@ -15,6 +15,32 @@
     --color-fondo: #11151B;
     --color-borde: #ff97fa79;
     --color-texto: whitesmoke;
+    --color-negro: #000000;
+    --color-negro-oscuro: rgba(0, 0, 0, 0.85);
+    --color-negro-vidrio: rgba(0, 0, 0, 0.822);
+    --color-negro-ficha: rgba(0, 0, 0, 0.6);
+    --color-negro-medio: rgba(0, 0, 0, 0.575);
+    --color-negro-sombra: rgba(0, 0, 0, 0.479);
+    --color-negro-suave: rgba(0, 0, 0, 0.15);
+    --color-negro-transparente: rgba(0, 0, 0, 0);
+    --color-blanco: #FFFFFF;
+    --color-vidrio-brillo: rgba(255, 255, 255, 0.15);
+    --color-borde-glossy: rgba(255, 255, 255, 0.4);
+    --color-gris-claro: rgb(223, 223, 223);
+    --color-gris-metal: #9A9A9A;
+    --color-gris: #8A8A8A;
+    --color-borde-stat: #898989;
+    --color-gris-oscuro: #3A3A3A;
+    --color-gris-input: rgb(17, 17, 17);
+    --color-negro-glossy: #0A0A0A;
+    --color-borde-gradiente-1: #ff97fafb;
+    --color-borde-gradiente-2: #ff00f238;
+    --color-borde-input-1: #ff97fa77;
+    --color-borde-input-2: #ff00f20e;
+    --color-stat-off: rgba(245, 245, 245, 0.288);
+    --color-rojo: #FF0000;
+    --color-azul: #0014FF;
+    --color-verde: #00FF2A;
     --transicion: .3s ease;
 }
 /*aca delcaramo la fuente, entonces, en el body que pusimo barlow condensed, la va a sacar de acá.*/
@@ -43,11 +69,11 @@ body{
 }
 
 .vidrio{/*material de vidrio, vamos a usar para fichas, y esas cosas*/
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.822) 0%, rgba(0, 0, 0, 0));
+    background: linear-gradient(to bottom, var(--color-negro-vidrio) 0%, var(--color-negro-transparente));
     backdrop-filter: blur(0.625rem) saturate(150%);/*blurea el fondo y el saturate cambia poquitin la saturacion*/
     box-shadow:
-    inset 0.25rem 0.25rem 1.875rem rgba(255, 255, 255, 0.15), /*inset es para interno, con la , dividmo, el interno, del de abajo que es ext*/
-    0 0.25rem 1.875rem rgba(0, 0, 0, 0.479); /*primer valor es desplazamiento horizontal, luego vertical y luego blur*/
+    inset 0.25rem 0.25rem 1.875rem var(--color-vidrio-brillo), /*inset es para interno, con la , dividmo, el interno, del de abajo que es ext*/
+    0 0.25rem 1.875rem var(--color-negro-sombra); /*primer valor es desplazamiento horizontal, luego vertical y luego blur*/
     border: 0.5px solid var(--color-borde);
 
 }
@@ -59,7 +85,6 @@ body{
     right: 0;
 
 }
-
 /*HEADER*/
 
 .header{/*nuestro header*/
@@ -124,6 +149,15 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     -webkit-text-stroke: 0.0625rem var(--color-magenta);
 }
 
+/*HEADER HAMBURGUESA*/
+/* Ocultamos el checkbox y el botón hamburguesa en compu */
+.header__check,
+.header__hamburguesa {
+    display: none; /*display none, los desactiva completamente*/
+}
+
+
+
 /*HERO*/
 .hero{/*Nuestra seccion del hero, que contiene el resto, y nuestra imagen del fondo*/
     position: relative;
@@ -134,8 +168,8 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     background-position: center; /*el recorte se hace desde el centro.*/
     background-repeat: no-repeat; /*que no tilee*/
     background-blend-mode: color;/*gracias a este podemos mezclar las capas,  de nuestro background image, con nuestro background coloir*/
-    background-color: rgba(0, 0, 0, 0.575);
-    box-shadow: inset 0.5rem 0.5rem 10rem black;
+    background-color: var(--color-negro-medio);
+    box-shadow: inset 0.5rem 0.5rem 10rem var(--color-negro);
     display: flex;
     align-items: center;
     padding: 0 8%;
@@ -188,13 +222,17 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 
 /*FICHA*/
 .ficha{ /*la ficha en si de vidrio*/
-    height: 27rem;
-    width: 32rem;
+    height: auto;
+    width: 100%; /*lo hacemos que ocupe el 100% de su padre
+    (el hero)*/
+    /* PERO que no pase de 32 rem.*/
+    max-width: 32rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding-left: 2rem;
     padding-top: 1rem;
+    padding-bottom: 1rem;
     gap: 1rem;
     clip-path: polygon(
         50px 0%,      /* Esquina superior izquierda cortada X e Y */ 
@@ -204,7 +242,7 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
         0% 100%,      /* Inferior izquierda recta */
         0% 10%         /* Cierre */
         ); /*cada uno es cada punto de la forma*/
-    border-image: linear-gradient(345deg, #ff97fafb, #ff00f238) 1;
+    border-image: linear-gradient(345deg, var(--color-borde-gradiente-1), var(--color-borde-gradiente-2)) 1;
         
     
 }
@@ -223,7 +261,7 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 
 .ficha__subtitle{
     font-size: 1.5rem;
-    color: rgb(223, 223, 223);
+    color: var(--color-gris-claro);
 }
 .fontnormal{
     font-style: normal;
@@ -257,10 +295,10 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 }
 
 .stat__barra{/*barrita de cada stat*/
-    background-color: rgba(245, 245, 245, 0);
+    background-color: transparent;
     width: 12rem;
     height: 1.3rem;
-    border: 0.5px solid #898989;
+    border: 0.5px solid var(--color-borde-stat);
     display: flex;
     gap: .225rem;
     padding: .225rem;
@@ -279,12 +317,12 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 }
 
 .stat__point--red{/*punto rojo de cada barrita*/
-    background-color: red;
+    background-color: var(--color-rojo);
 }
 
 .stat__point--desactive/*punto desactivado de cada barrita*/
 {
-    background-color: rgba(245, 245, 245, 0.288);
+    background-color: var(--color-stat-off);
 }
 
 .boton{/*TUNE de la ficha*/
@@ -314,8 +352,8 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     padding-left: 3rem;
     flex-direction: column;
     gap: 5rem;
-    background-color: rgba(0, 0, 0, 0.15);
-    box-shadow: inset 0.5rem 0.5rem 10rem black;
+    background-color: var(--color-negro-suave);
+    box-shadow: inset 0.5rem 0.5rem 10rem var(--color-negro);
 }
 .kanji--cyan{ /*kanji suelto*/
     color: var(--color-cyan);
@@ -347,8 +385,8 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     padding-top: 27rem;
     flex-direction: column;
     gap: 5rem;
-    background-color: rgba(0, 0, 0, 0.15);
-    box-shadow: inset 0.5rem 0.5rem 10rem black;
+    background-color: var(--color-negro-suave);
+    box-shadow: inset 0.5rem 0.5rem 10rem var(--color-negro);
 }
 
 .hero__titulo--lg{/*modificador de titulos de tamaño largo*/
@@ -359,8 +397,8 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 /*Hero Models*/
 .hero--models{
     background-image: url('../images/end.jpg');
-    background-color: rgba(0, 0, 0, 0.15);
-    box-shadow: inset 0.5rem 0.5rem 10rem black;
+    background-color: var(--color-negro-suave);
+    box-shadow: inset 0.5rem 0.5rem 10rem var(--color-negro);
     
 }
 .franja{
@@ -379,8 +417,8 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 /*Hero Configurator*/
 .hero--configurator{
     background-image: url('../images/tune.jpg');
-    background-color: rgba(0, 0, 0, 0.15);
-    box-shadow: inset 0.5rem 0.5rem 10rem black;
+    background-color: var(--color-negro-suave);
+    box-shadow: inset 0.5rem 0.5rem 10rem var(--color-negro);
     align-items: flex-end;
     flex-direction: column;
     justify-content: center;
@@ -389,12 +427,16 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 .auto--config{
     left: 5rem;
     top: 23rem;
-    width: 65%;
+    width:65%;
 
+    
 }
+    
+
 .ficha--configurator{
+    width: 100%;
     height: auto; /*se adapta al contenido*/
-    width: 35rem;
+    max-width: 35rem;
     margin-top: 11rem;
     margin-right: 0px;
 }
@@ -459,29 +501,29 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 .muestra__circulo--magenta{ background-color: var(--color-magenta); }
 .muestra__circulo--cyan{ background-color: var(--color-cyan); }
 .muestra__circulo--yellow{ background-color: var(--color-yellow); }
-.muestra__circulo--red{ background-color: #FF0000; }
-.muestra__circulo--blue{ background-color: #0014FF; }
-.muestra__circulo--green{ background-color: #00FF2A; }
-.muestra__circulo--white{ background-color: #FFFFFF; }
-.muestra__circulo--gray{ background-color: #8A8A8A; }
-.muestra__circulo--black{ background-color: #000000; }
+.muestra__circulo--red{ background-color: var(--color-rojo); }
+.muestra__circulo--blue{ background-color: var(--color-azul); }
+.muestra__circulo--green{ background-color: var(--color-verde); }
+.muestra__circulo--white{ background-color: var(--color-blanco); }
+.muestra__circulo--gray{ background-color: var(--color-gris); }
+.muestra__circulo--black{ background-color: var(--color-negro); }
 .muestra__circulo--matte{
-    background-color: whitesmoke;
+    background-color: var(--color-texto);
 }
 
 .muestra__circulo--metallic{
-    background: radial-gradient(circle, #FFFFFF 0%, #9A9A9A 100%);
+    background: radial-gradient(circle, var(--color-blanco) 0%, var(--color-gris-metal) 100%);
 }
 
 .muestra__circulo--glossy{
-    background: radial-gradient(circle at 30% 30%, #3A3A3A, #0A0A0A);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: radial-gradient(circle at 30% 30%, var(--color-gris-oscuro), var(--color-negro-glossy));
+    border: 1px solid var(--color-borde-glossy);
 }
 /*Hero shworoom*/
 .hero--galeria{
     background-image: url('../images/garage.jpg');
-    background-color: rgba(0, 0, 0, 0.15);
-    box-shadow: inset 0.5rem 0.5rem 10rem black;
+    background-color: var(--color-negro-suave);
+    box-shadow: inset 0.5rem 0.5rem 10rem var(--color-negro);
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
@@ -519,7 +561,7 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.6));
+    background: linear-gradient(to bottom, var(--color-negro-oscuro), var(--color-negro-ficha));
 }
 .ficha__img{
     width: 100%;
@@ -541,8 +583,8 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 
 .hero--contacto{ /*Nuestro section del hero con el modificador por que estamos en contacto*/
     background-image: url('../images/tune.jpg');
-    background-color: rgba(0, 0, 0, 0.575);
-    box-shadow: inset 0.5rem 0.5rem 10rem black;
+    background-color: var(--color-negro-medio);
+    box-shadow: inset 0.5rem 0.5rem 10rem var(--color-negro);
     flex-direction: row;
     justify-content: space-between;/* título a la izquierda, panel a la derecha */
     align-items: flex-start;
@@ -553,7 +595,8 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     flex-direction: row; /* uno al lado del otro */
     align-items: flex-start;
     
-    width: 65rem;
+    width: 100%;
+    max-width: 65rem;
     height: auto;/* que la altura la decida el contenido */
     padding: 2.5rem;
     margin-bottom: 5rem;
@@ -589,12 +632,12 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
     font: inherit; /* que use la letra del body */
     font-size: 1.4rem;
     color: var(--color-texto);
-    background-color: rgb(17, 17, 17);
+    background-color: var(--color-gris-input);
     border: 0.1px solid;
-    border-image: linear-gradient(345deg, #ff97fa77, #ff00f20e) 1;
+    border-image: linear-gradient(345deg, var(--color-borde-input-1), var(--color-borde-input-2)) 1;
     padding: 0.6rem 0.8rem;
     width: 100%;
-
+    
 }
 .formulario__boton{
     align-self: flex-start; /*align self es propiedad de hijo de flex. y lo podemos alinear en el*/
@@ -668,7 +711,7 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 }
 .footer__link{
     text-decoration: none;
-    color: rgb(196, 194, 194);
+    color: var(--color-texto);
     transition: font-size var(--transicion);
     font-size: 1.6rem;
 }
@@ -724,4 +767,211 @@ y el color que queremos y eso, todo acá, si lo ponemos en el body no funca*/
 }
 @keyframes banner-anim{/*movimiento del texto del banner*/
     to { transform: translateX(-50%); }
+}
+/* Celular, si la pantalla es menos de 768px */
+@media (max-width: 768px) {
+    .header {
+        height: 6rem; /*cuando la pantalla sea menos de 768, 
+        la altura del header es de 6 rem y el padiing entre izq y der es de
+        1.5*/
+        padding: 0 1.5rem;
+    }
+
+    .logo { /*el logo se hace mas pequeño tambien*/
+        width: 11rem;
+    }
+
+    
+    .header__hamburguesa { /*las 3 rayitas las mostramos*/
+        display: block; /* display block lo vueve a hacer visible
+        y ademas ocupa todo el ancho disponible de izq a der y
+        por ende empuja lo demas hacia abajo por que como ocupa todo
+        nada se puede poner a su costado*/
+        font-size: 2.5rem; /*le damos el tamaño a las 3 rayitas*/
+        color: var(--color-texto);
+        cursor: pointer;
+    }
+
+    
+    .header__nav { /* Nuestro nav normal, con display none, lo escondemos*/
+        /*Lo escondemos MIENTRAS NO pulsemos el boton*/
+        display: none;
+        /*Pero ya vamos seteandole las cosas para que sea vea como queremos*/
+        /*Lo ponemos en absolute, por lo que toma de refe la posicion de 
+        su padre no static que es el header*/
+        position: absolute;
+        top: 6rem; /*le damo la ubicacion por arriba que queremos
+        en este caso abajo del header*/
+        left: 0;
+        width: 100%;
+        
+        background-color: var(--color-fondo);
+        border-bottom: 1px solid var(--color-borde);
+        padding: 2rem 0;
+    }
+
+    /* Cuando tocás las 3 rayitas, se muestra el menú en columna */
+    /*Esto significa, cuando el header__check sea checkeado
+    que busque en sus hermanos (~) el que se llame header__nav
+    y lo pone en display block que ya sabemos que
+    hace que lo ponga visible, y además empuje todo abajo*/
+    .header__check:checked ~ .header__nav {
+        display: block;
+    }
+
+    .header__lista {
+        /*y bueno importante claro, lo ponemos en columna*/
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .hero__titulo{
+        font-size: 4.5rem; /*era 11rem */
+        line-height: 0.85; /* era 0.65 pero lo espaciamos mas para que se lea mejor en celular*/
+    }
+    .hero__titulo--lg {
+        font-size: 3.8rem; /*Era 8rem*/
+    }
+
+    .hero__titulo--md {
+        font-size: 3.5rem; /*era 7rem */
+    }
+
+    .hero__subtitulo {
+        font-size: 1.4rem; /*era 3rem */
+    }
+
+    .kanji{
+        font-size: 4rem;
+    }
+
+    /*AUTO IMAGEN*/
+    .auto {
+        position: static; /*Lo ponemos normal en static 
+        entonces se acomoda normal en columna */
+        /*y que se vea un poco mas grande*/
+        width: 100%;
+    }
+    
+    /*SHOWROOM*/
+    .filtros {
+        flex-wrap: wrap; /* hace que puedan pasar abajo si no entran*/
+        height: auto;
+        padding: 1rem;
+        gap: 1rem 1.5rem;
+        font-size: 1.4rem;
+    }
+
+    .grilla {
+        display: flex;/* Pasamos fila  */
+        flex-direction: row;
+        overflow-x: auto;/* Activa el scroll horizontal SOLO adentro de la grilla */
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-magenta) transparent;
+        width: 100%; /* No se pasa del ancho del celular */
+        gap: 1.5rem; 
+        padding: 9rem 1.5rem 9rem; /* Aire a los costados y abajo para la barrita */
+        margin-top: 2rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ficha--showroom {
+        flex-shrink: 0; /* Evita que flexbox aplaste las tarjetas para meterlas todas
+        manteniendo su tamaño */
+        width: 18rem; /* Tamaño nuevo*/
+        height: auto; /*se adapta al tamaño del contenido*/
+    }
+
+    .hero--contacto{
+        flex-direction: column;
+    }
+
+    /*---CONFIGURATOR*/
+    .hero--configurator{
+        padding: 11rem 0 0; /*que empuje un poco el coche hacia abajo*/
+        
+    }
+    .hero--configurator .kanji{
+        display: none; /*sacamo el kanji por que molesta en celular*/
+    }
+    .auto--config{
+        margin-top: 20rem; /*empujamos todo hacia abajo un poco*/
+    }
+    .ficha--configurator{
+        max-width: none; /* que la ficha en celu sea todo el ancho*/
+        padding: 0;
+        gap: 0;
+        align-items: stretch; /*esto hace que los elementos se acomoden adentro sin deformarse*/
+        clip-path: polygon(1.5rem 0, 100% 0, 100% 100%, 0 100%, 0 1.5rem);
+        margin-top: 0;
+    }
+    .pestanas{
+        padding: 0.7rem 1rem; /*hacemos que las pestañas entren un poco mejor*/
+        gap: 0.5rem;
+    }
+    .pestanas__boton{
+        font-size: clamp(1rem, 5.4vw, 1.5rem);
+        /*el 1 rem es el minimo que va a tener la letra, nunca se va a achicar mas q eso
+        el 5.4vw (5.4% del tamaño de la screen) es el tamaño ideal digamos
+        el 1.5 final es el maximo que va a tener la letra.
+        Entones la letra siempre va a tener el 5.4% del ancho de la pantalla
+        pero nunca va a ser mas grande que 1.5 rem o mas chico que eso tambien.*/
+    }
+    .opciones{
+                /*top right bottom left*/
+        padding: 0.5rem 1rem 0.3rem 1rem; /*lo acomadamos mejor*/
+    }
+    .opciones__titulo{
+        font-size: 1.4rem; /*cambiamos tamaño fuente y margen*/
+        margin-bottom: 0.3rem;
+    }
+    .opciones__grupo{
+        display: flex;/*antes era grid */
+        gap: 1rem;
+        overflow-x: auto;/*ahora a las opciones les ponemos scroll horizontal*/
+        padding: 0.5rem 1rem 0.3rem 0;
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-magenta) transparent; /*colorcito a la barra, el 
+        transparent es como para el fondo que contiene la barrita*/
+    }
+    .muestra__circulo{
+        width: 2.8rem;/*circulitos mas chikitos*/
+        height: 2.8rem;
+    }
+    .muestra__nombre{
+        font-size: 0.75rem;
+    }
+    .ficha--configurator .boton{
+        align-self: center;
+        margin: 0.2rem 0 0.6rem;
+    }
+
+
+    /* --- FOOTER --- */
+    .footer {
+        height: auto; /*que se adapte al contenido*/
+    }
+
+    .footer__section {
+        flex-direction: column; /* lo pasamos a columna*/
+        align-items: center;
+        text-align: center; /*to centrao*/
+        padding: 3rem 1rem;
+        gap: 2.5rem;
+    }
+
+    .logo--footer,
+    .footer__contact {
+        position: static; /*Estatico para que responda a la columna*/
+    }
+
+    .logo--footer {
+        width: 12rem;
+    }
+
+    .kanji--footer{
+        top: 80%;
+    }
+
 }

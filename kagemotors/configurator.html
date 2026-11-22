@@ -4,13 +4,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Kage Motors</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/main.js" defer></script>
+    <meta property="og:title" content="Kage Motors — JDM Legends & Custom Builds">
+    <meta property="og:description" content="Explore iconic Japanese sports cars, customize your build, and discover the night street culture.">
+    <meta property="og:image" content="images/hero-home.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kagemotors.com">
 </head>
 <body>
      <header class="header vidrio">
 
-       <img class="logo" src="images/logo.png">
+       <img class="logo" src="images/logo.png" alt="Kage Motors Logo">
+       <label class="header__hamburguesa" for="menu-toggle">☰</label>
+        <input class="header__check" type="checkbox" id="menu-toggle">
+        <!--EL label es el boton de las 3 raytias basicamente
+        sabemos que en el label, al darle en el for, el mismo id del input
+        se activa el input.-->
+        <!--El input checkbox es el tipico cuadradito que si apretas 
+        se pone tilde-->
         <nav class="header__nav">
             <ul class="header__lista">
                 <li class="header__item"><a href="index.html"> HOME </a></li> <!--BEM, por que nosotros queremos que la pagina que este activa, en el header, aparezca en cyan. Entonces por eso el modificador que es -- por que todos comparten la misma clase, pero despues en el css, este va a ser el unico que va a estar en cyan. y se va a aplicar en todas las paginas-->
@@ -33,7 +46,7 @@
     <main>
 
         <section class="hero hero--configurator">
-            <span class="kanji kanji--cyan">影</span>
+            <h1 class="kanji kanji--cyan">影</h1>
             <img class="auto auto--config" src="images/skylinepiola.png">
             <article class="ficha ficha--configurator vidrio">
                 <nav class="pestanas">
@@ -45,7 +58,7 @@
                 </nav>
 
                 <section class="opciones">
-                    <h3 class="opciones__titulo">COLOR 色</h3>
+                    <h2 class="opciones__titulo">COLOR 色</h2>
                     <div class="opciones__grupo">
                         <label class="muestra"><!--Usamos label ya que vamos a usar input, por que? Por que queremos usar el type radio
                             de input, que es el tipico ciruclito checkbox y como justamente esto son botones también lo vamos a aprovechar
@@ -103,7 +116,7 @@
                 </section>
 
                 <section class="opciones">
-                    <h3 class="opciones__titulo">FINISH 質感</h3>
+                    <h2 class="opciones__titulo">FINISH 質感</h2>
                     <div class="opciones__grupo">
                         <label class="muestra"> 
                             <input class="muestra__input" type="radio" name="acabado" value="matte">
